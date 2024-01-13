@@ -1,28 +1,22 @@
 import { React, useEffect, useState } from "react";
 
+//Elysio Card Components
+import DayCard from "../DayCard/DayCard";
+import QuoteCard from "../QuoteCard/QuoteCard";
+
 //TODOS: props for display card
 
-function DisplayCard() {
+function DisplayCard(props) {
   // card will consist of different types / DayCard, QuoteCard, etc.
 
-  const [card, setCard] = useState([]);
+  //TODO: useEffect to fetch cards from backend
+
+  //TODO: Conditional rendering for card type
 
   return (
-    <div className="h-96 my-8 card bordered shadow-lg bg-primary">
-      <div className="card-body">
-        {/* <h2 className="card-title">Card Title</h2> */}
-        {/* <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          necessitatibus incidunt ut officiis explicabo inventore.
-        </p> */}
-
-        <p className="text-9xl font-bold">28</p>
-
-        {/* <div className="justify-end card-actions">
-          <button className="btn btn-secondary">More Info</button>
-        </div> */}
-      </div>
-    </div>
+    <>
+      <DayCard />
+    </>
   );
 }
 export default DisplayCard;
