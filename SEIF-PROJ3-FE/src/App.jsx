@@ -1,3 +1,14 @@
+import { React, useState, useEffect } from "react";
+
+//Elysio Components
+import Frontpage from "./Frontpage/Frontpage";
+
+//TODO: Daisy UI 30 x Card Array for Frontpage
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <>
+      <Frontpage />
+    </>
+  );
 }
