@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react'
-import { getLoginDetails, loginUser } from "../../service/users"
-import { hashDataWithSaltRounds, storeToken } from '../../util/security';
+import { getLoginDetails, loginUser } from "../service/users"
+import { hashDataWithSaltRounds, storeToken } from '../util/security';
 import SignUpPage from "../SignUpPage/SignUpPage";
 
 export default function LoginPage() {
