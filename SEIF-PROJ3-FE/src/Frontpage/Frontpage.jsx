@@ -3,7 +3,7 @@ import React from "react";
 function Frontpage() {
   return (
     <>
-      <div class="gap-8 columns-3">
+      <div class="ml-6 mr-6 gap-8 columns-3 ">
         <img
           class="w-full aspect-video mb-6"
           src="https://picsum.photos/500/300?random=1"
