@@ -1,5 +1,11 @@
 import * as usersAPI from "../api/users";
-import { getToken } from "../util/security";
+// import { getToken } from "../util/security";
+
+export async function getUserByUsername(username) {
+  return await usersAPI.getUserByUsername(username);
+}
+
+//Below are all the ShaoQuan codes for signin/auth and what not, i separated from above for now since i wanted to test for the above to pull data (user_id) into JournalForm.jsx - Vivian 
 
 export async function signUp(userData) {
     // Delegate the network request code to the users-api.js API module

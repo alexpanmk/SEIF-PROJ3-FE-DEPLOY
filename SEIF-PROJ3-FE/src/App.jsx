@@ -1,39 +1,35 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { getUser } from './service/users';
 
-//Elysio Components
+// Elysio Components
 import Frontpage from "./Frontpage/Frontpage";
 import Navbar from "./Navbar/Navbar";
-import SignUpPage from "./SignUpPage/SignUpPage";
 import LoginPage from "./LoginPage/LoginPage";
-
-//TODO: Daisy UI 30 x Card Array for Frontpage
+import JournalForm from "./JournalForm/JournalForm"; // Import the JournalForm component
 
 export default function App() {
+  const [user, setUser] = useState(null);
 
-  const [count, setCount] = useState(0)
-  const [user, setUser] = useState(getUser)
+  // Commenting out the useEffect that retrieves user information - Vivian
+
+  // useEffect(() => {
+  //   setUser(getUser());
+  // }, []);
 
   return (
-    <Router> {/* <-- Wrap your application with Router */}
+    <Router> {/* Wrap your application with Router */}
       <main className="App">
-        {user ? (
-          <>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Frontpage />} />
-              {/* other routes for logged-in users */}
-            </Routes>
-          </>
-        ) : (
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            {/* Redirect any other route to the Login Page */}
-            <Route path="*" element={<Navigate replace to="/" />} />
-          </Routes>
-        )}
+        <Navbar />
+        <Routes>
+          <Route path="/" element={user ? <Frontpage /> : <LoginPage />} />
+          {/* Route for new journal entry */}
+          <Route path="/journal/new" element={<JournalForm />} />
+          {/* Temporary route for testing the JournalForm */}
+          {/* When SignUpPage is ready, uncomment the following line and remove the temporary route */}
+          {/* <Route path="/signup" element={<SignUpPage />} /> */}
+          {/* Redirect any undefined route to the JournalForm for testing purposes */}
+          <Route path="*" element={<Navigate replace to="/journal/new" />} />
+        </Routes>
       </main>
     </Router>
   );

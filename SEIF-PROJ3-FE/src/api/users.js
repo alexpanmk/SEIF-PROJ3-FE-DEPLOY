@@ -1,5 +1,21 @@
-// This is the base path of the Express route we'll define
-const BASE_URL = "http://localhost:3000/users";
+const BASE_URL = 'http://localhost:3000/users';
+
+// Add a function to get user details by username or email
+export async function getUserByUsername(username) {
+  const searchParams = new URLSearchParams({ username });
+  const response = await fetch(`${BASE_URL}?${searchParams.toString()}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    throw new Error('Failed to get user details');
+  }
+  const users = await response.json();
+  return users.length > 0 ? users[0] : null; // Assuming the first user is the one we want
+}
+
+
+//Below are all the ShaoQuan codes for signin/auth and what not, i separated from above for now since i wanted to test for the above to pull data (user_id) into JournalForm.jsx - Vivian 
 
 export async function signUp(userData) {
   // Fetch uses an options object as a second arg to make requests
