@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createJournalEntry } from '../service/journalentry'; // Import the service function
+import { createJournalEntry } from '../service/journalentry';
 
 const JournalForm = () => {
   const [title, setTitle] = useState('');
@@ -7,7 +7,6 @@ const JournalForm = () => {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
 
-  // Dummy user_id and card_id for testing purposes only, need to change this later to fetch the user_id and card_id from backend
   const user_id = "65a22ea8faff54dc30fd9da1";
   const card_id = "65a2098afaff54dc30fd9d9b";
 
@@ -35,60 +34,70 @@ const JournalForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-control w-full max-w-xs">
-      <div className="mb-4">
-        <label htmlFor="title" className="label">
-          <span className="label-text">Title</span>
-        </label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="input input-bordered w-full"
-        />
+    <div className="flex justify-center items-center h-screen">
+      <div className="card bg-base-100 shadow-xl w-full max-w-2xl">
+        <div className="card-body">
+          <form onSubmit={handleSubmit}>
+            <h2 className="card-title text-center mb-4">Journal Entry</h2>
+            <div className="form-control mb-4">
+              <label htmlFor="title" className="label">
+                <span className="label-text">Title</span>
+              </label>
+              <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control mb-4">
+              <label htmlFor="description" className="label">
+                <span className="label-text">Description</span>
+              </label>
+              <input
+                id="description"
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control mb-4">
+              <label htmlFor="text" className="label">
+                <span className="label-text">Text</span>
+              </label>
+              <textarea
+                id="text"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                className="textarea textarea-bordered h-24"
+              />
+            </div>
+            <div className="form-control mb-6">
+              <label htmlFor="date" className="label">
+                <span className="label-text">Date</span>
+              </label>
+              <input
+                id="date"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-primary w-full">Save Journal Entry</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className="mb-4">
-        <label htmlFor="description" className="label">
-          <span className="label-text">Description</span>
-        </label>
-        <input
-          id="description"
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="input input-bordered w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="text" className="label">
-          <span className="label-text">Text</span>
-        </label>
-        <textarea
-          id="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="textarea textarea-bordered h-24"
-        />
-      </div>
-      <div className="mb-6">
-        <label htmlFor="date" className="label">
-          <span className="label-text">Date</span>
-        </label>
-        <input
-          id="date"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="input input-bordered w-full"
-        />
-      </div>
-      <button type="submit" className="btn btn-primary">Save Journal Entry</button>
-    </form>
+    </div>
   );
 };
 
 export default JournalForm;
+
 
 
 //Code below is to be revised to use user_id/username and card_id as validation
@@ -162,45 +171,66 @@ export default JournalForm;
 //     }
 //   };
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label htmlFor="title">Title</label>
-//         <input
-//           id="title"
-//           type="text"
-//           value={title}
-//           onChange={(e) => setTitle(e.target.value)}
-//         />
+// return (
+//     <div className="flex justify-center items-center h-screen">
+//       <div className="card bg-base-100 shadow-xl w-full max-w-2xl">
+//         <div className="card-body">
+//           <form onSubmit={handleSubmit}>
+//             <h2 className="card-title text-center mb-4">Journal Entry</h2>
+//             <div className="form-control mb-4">
+//               <label htmlFor="title" className="label">
+//                 <span className="label-text">Title</span>
+//               </label>
+//               <input
+//                 id="title"
+//                 type="text"
+//                 value={title}
+//                 onChange={(e) => setTitle(e.target.value)}
+//                 className="input input-bordered w-full"
+//               />
+//             </div>
+//             <div className="form-control mb-4">
+//               <label htmlFor="description" className="label">
+//                 <span className="label-text">Description</span>
+//               </label>
+//               <input
+//                 id="description"
+//                 type="text"
+//                 value={description}
+//                 onChange={(e) => setDescription(e.target.value)}
+//                 className="input input-bordered w-full"
+//               />
+//             </div>
+//             <div className="form-control mb-4">
+//               <label htmlFor="text" className="label">
+//                 <span className="label-text">Text</span>
+//               </label>
+//               <textarea
+//                 id="text"
+//                 value={text}
+//                 onChange={(e) => setText(e.target.value)}
+//                 className="textarea textarea-bordered h-24"
+//               />
+//             </div>
+//             <div className="form-control mb-6">
+//               <label htmlFor="date" className="label">
+//                 <span className="label-text">Date</span>
+//               </label>
+//               <input
+//                 id="date"
+//                 type="date"
+//                 value={date}
+//                 onChange={(e) => setDate(e.target.value)}
+//                 className="input input-bordered w-full"
+//               />
+//             </div>
+//             <div className="form-control mt-6">
+//               <button type="submit" className="btn btn-primary w-full">Save Journal Entry</button>
+//             </div>
+//           </form>
+//         </div>
 //       </div>
-//       <div>
-//         <label htmlFor="description">Description</label>
-//         <input
-//           id="description"
-//           type="text"
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//         />
-//       </div>
-//       <div>
-//         <label htmlFor="text">Text</label>
-//         <textarea
-//           id="text"
-//           value={text}
-//           onChange={(e) => setText(e.target.value)}
-//         />
-//       </div>
-//       <div>
-//         <label htmlFor="date">Date</label>
-//         <input
-//           id="date"
-//           type="date"
-//           value={date}
-//           onChange={(e) => setDate(e.target.value)}
-//         />
-//       </div>
-//       <button type="submit">Save Journal Entry</button>
-//     </form>
+//     </div>
 //   );
 // };
 

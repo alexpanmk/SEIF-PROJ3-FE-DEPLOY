@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Frontpage from "./Frontpage/Frontpage";
 import Navbar from "./Navbar/Navbar";
 import LoginPage from "./LoginPage/LoginPage";
-import JournalForm from "./JournalForm/JournalForm"; // Import the JournalForm component
+import JournalForm from "./JournalForm/JournalForm"; 
+import JournalEntry from "./JournalEntry/JournalEntry"; 
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -17,20 +18,20 @@ export default function App() {
   // }, []);
 
   return (
-    <Router> {/* Wrap your application with Router */}
-      <main className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={user ? <Frontpage /> : <LoginPage />} />
-          {/* Route for new journal entry */}
-          <Route path="/journal/new" element={<JournalForm />} />
-          {/* Temporary route for testing the JournalForm */}
-          {/* When SignUpPage is ready, uncomment the following line and remove the temporary route */}
-          {/* <Route path="/signup" element={<SignUpPage />} /> */}
-          {/* Redirect any undefined route to the JournalForm for testing purposes */}
-          <Route path="*" element={<Navigate replace to="/journal/new" />} />
-        </Routes>
-      </main>
-    </Router>
+    <Router>
+    <main className="App">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={user ? <Frontpage /> : <LoginPage />} />
+        <Route path="/journal/new" element={<JournalForm />} />
+        {/* Add a route for an individual journal entry */}
+        <Route path="/journal/entry/:entryId" element={<JournalEntry />} />
+        {/* Redirect any undefined route to the JournalForm for testing purposes */}
+        <Route path="*" element={<Navigate replace to="/journal/new" />} />
+      </Routes>
+    </main>
+  </Router>
   );
 }
+
+

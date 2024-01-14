@@ -18,9 +18,26 @@ export async function createJournalEntry(entryData) {
   }
 }
 
-export async function getJournalEntries(queryParams) {
-  const searchParams = new URLSearchParams(queryParams);
-  const getURL = `${BASE_URL}?${searchParams}`;
+// export async function getJournalEntries(queryParams) {
+//   const searchParams = new URLSearchParams(queryParams);
+//   const getURL = `${BASE_URL}?${searchParams}`;
+//   const response = await fetch(getURL, {
+//     method: 'GET',
+//     headers: { 'Content-Type': 'application/json' },
+//   });
+
+//   if (response.ok) {
+//     return response.json();
+//   } else {
+//     // It's good to log the response to understand the error details
+//     const errorBody = await response.text();
+//     console.error('Error response body:', errorBody);
+//     throw new Error('Failed to get journal entries');
+//   }
+// }
+
+export async function getJournalEntryById(entryId) {
+  const getURL = `${BASE_URL}/${entryId}`; // RESTful convention for fetching a resource by ID
   const response = await fetch(getURL, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -29,9 +46,8 @@ export async function getJournalEntries(queryParams) {
   if (response.ok) {
     return response.json();
   } else {
-    // It's good to log the response to understand the error details
     const errorBody = await response.text();
     console.error('Error response body:', errorBody);
-    throw new Error('Failed to get journal entries');
+    throw new Error('Failed to get journal entry');
   }
 }
