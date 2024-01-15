@@ -24,7 +24,7 @@ export default function App() {
       {" "}
       {/* <-- Wrap your application with Router */}
       <main className="App">
-        {!user ? (
+        {user ? (
           <>
             <Navbar />
             <Routes>
