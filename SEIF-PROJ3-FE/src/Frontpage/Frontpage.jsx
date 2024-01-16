@@ -3,57 +3,32 @@ import DisplayCard from "../DisplayCard/DisplayCard";
 
 //TODO: To fetch cards to render for DisplayCards, to create useElysioAPI for logic to create the display sequence.
 
-function Frontpage() {
-  const [monthArray, setMonthArray] = useState([]); //For the days
-  const [quoteArray, setQuoteArray] = useState([]); // For the quotes
+const sampleMonthArray = [
+  { dateNo: 1, day: "Wednesday" },
+  { dateNo: 2, day: "Thursday" },
+  { dateNo: 3, day: "Friday" },
+  { dateNo: 4, day: "Saturday" },
+  { dateNo: 5, day: "Sunday" },
+];
 
-  useEffect(() => {
-    setMonthArray(generateMonthArray(2021, 8));
-  }, []);
+function Frontpage() {
+  const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
+  const [quoteArray, setQuoteArray] = useState([]); // For the quotes
+  const [displayCardArray, setDisplayCardArray] = useState([]); // For the cards
 
   return (
     <>
       <div class="ml-6 mr-6 gap-8 columns-4 ">
-        <DisplayCard />
-        <img
-          class="w-full aspect-video mb-6"
-          src="https://picsum.photos/500/300?random=1"
-        />
-        <img
-          class="w-full aspect-square mb-6"
-          src="https://picsum.photos/500/300?random=2"
-        />
-        <img
-          class="w-full aspect-square mb-6"
-          src="https://picsum.photos/500/300?random=3"
-        />
-
-        <img
-          class="w-full aspect-square mb-6"
-          src="https://picsum.photos/500/300?random=4"
-        />
-        <img
-          class="w-full aspect-video mb-6"
-          src="https://picsum.photos/500/300?random=5"
-        />
-        <img
-          class="w-full aspect-video mb-6"
-          src="https://picsum.photos/500/300?random=6"
-        />
-        <img
-          class="w-full aspect-square mb-6"
-          src="https://picsum.photos/500/300?random=7"
-        />
-        <img
-          class="w-full aspect-video mb-6"
-          src="https://picsum.photos/500/300?random=8"
-        />
-        <DisplayCard />
-        <img
-          class="w-full aspect-square mb-6"
-          src="https://picsum.photos/500/300?random=9"
-        />
-        <DisplayCard />
+        {monthArray.map((day, index) => {
+          return (
+            <DisplayCard
+              key={index}
+              dateNo={day.dateNumber}
+              day={day.day}
+              index={index}
+            />
+          );
+        })}
       </div>
     </>
   );

@@ -7,15 +7,14 @@ import QuoteCard from "../QuoteCard/QuoteCard";
 //TODOS: props for display card
 
 function DisplayCard(props) {
+  const { dateNo, day } = props;
   // card will consist of different types / DayCard, QuoteCard, etc.
-
-  //TODO: useEffect to fetch cards from backend
 
   //TODO: Conditional rendering for card type
 
   return (
     <>
-      <DayCard />
+      <DayCard dateNo={dateNo} day={day} />
     </>
   );
 }

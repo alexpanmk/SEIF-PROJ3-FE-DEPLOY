@@ -1,6 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { getUser } from './service/users';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { getUser } from "./service/users";
 
 //Elysio Components
 import Frontpage from "./Frontpage/Frontpage";
@@ -11,12 +16,13 @@ import LoginPage from "./LoginPage/LoginPage";
 //TODO: Daisy UI 30 x Card Array for Frontpage
 
 export default function App() {
-
-  const [count, setCount] = useState(0)
-  const [user, setUser] = useState(getUser)
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(getUser);
 
   return (
-    <Router> {/* <-- Wrap your application with Router */}
+    <Router>
+      {" "}
+      {/* <-- Wrap your application with Router */}
       <main className="App">
         {user ? (
           <>
