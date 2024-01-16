@@ -3,27 +3,15 @@ import { signUp } from "../service/users"
 import { hashData } from "../util/security"
 
 export default function SignUpForm() {
-    const [formState, setFormState] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
-
-    const [formErrors, setFormErrors] = useState({
-        username: '',
-        email: '',
-    });
-
+    const [formState, setFormState] = useState({});
     const [disable, setDisable] = useState(true);
 
     function handleChange(evt) {
-        const currForm = {
-            ...formState,
-            [evt.target.name]: evt.target.value
-        };
+        var currForm = formState;
+        currForm[evt.target.name] = evt.target.value;
         setDisable(checkPassword());
         setFormState(currForm);
-      };
+    };
     
     // make sure check and password is the same
     function checkPassword() {
@@ -70,23 +58,9 @@ export default function SignUpForm() {
             const user = await signUp(formData);
             // Baby step!
             console.log(user)
-
-            // Reset form errors if sign up is successful
-            setFormErrors({ username: '', email: '' });
           
           } catch(e) {
             console.log(e);
-
-            // Assuming the error object has a response field with the server's response
-            if (e.response && e.response.data) {
-                const errors = e.response.data;
-                // Update formErrors with the server's response
-                setFormErrors({
-                    ...formErrors,
-                    username: errors.username || '',
-                    email: errors.email || '',
-                });
-            }
           }
     }
 
@@ -99,21 +73,9 @@ export default function SignUpForm() {
                     <label>Last Name</label>
                     <input type="last_name" name="last_name" onChange={handleChange} required />
                     <label>Username</label>
-                    <input 
-                        type="text" 
-                        name="username" 
-                        value={formState.username} 
-                        onChange={handleChange} 
-                    />
-                    {formErrors.username && <p className="error">{formErrors.username}</p>}
+                    <input type="text" name="username" onChange={handleChange} required />
                     <label>Email</label>
-                    <input 
-                        type="email" 
-                        name="email" 
-                        value={formState.email} 
-                        onChange={handleChange} 
-                    />
-                    {formErrors.email && <p className="error">{formErrors.email}</p>}
+                    <input type="email" name="email" onChange={handleChange} required />
                     <label>Password</label>
                     <input type="password" name="password" onChange={handleChange} required />
                     <label>Confirm Password</label>
