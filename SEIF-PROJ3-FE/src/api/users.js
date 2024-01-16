@@ -20,7 +20,7 @@ export async function getUserByUsername(username) {
 export async function signUp(userData) {
   // Fetch uses an options object as a second arg to make requests
   // other than basic GET requests, include data, headers, etc.
-  const createURL = BASE_URL + '/create';
+  const createURL = BASE_URL + '/create-user';
   console.log(createURL);
   const res = await fetch(createURL, {
     method: "POST",
