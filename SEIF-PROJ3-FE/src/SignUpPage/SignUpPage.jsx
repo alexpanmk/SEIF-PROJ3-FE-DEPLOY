@@ -17,8 +17,10 @@ export default function SignUpForm() {
     const [disable, setDisable] = useState(true);
 
     function handleChange(evt) {
-        var currForm = formState;
-        currForm[evt.target.name] = evt.target.value;
+        const currForm = {
+            ...formState,
+            [evt.target.name]: evt.target.value
+        };
         setDisable(checkPassword());
         setFormState(currForm);
       };
@@ -100,7 +102,7 @@ export default function SignUpForm() {
                     <input 
                         type="text" 
                         name="username" 
-                        value={formData.username} 
+                        value={formState.username} 
                         onChange={handleChange} 
                     />
                     {formErrors.username && <p className="error">{formErrors.username}</p>}
@@ -108,12 +110,14 @@ export default function SignUpForm() {
                     <input 
                         type="email" 
                         name="email" 
-                        value={formData.email} 
+                        value={formState.email} 
                         onChange={handleChange} 
                     />
                     {formErrors.email && <p className="error">{formErrors.email}</p>}
                     <label>Password</label>
                     <input type="password" name="password" onChange={handleChange} required />
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm" onChange={handleChange} required />
                     <button type="submit" disabled={disable}>SIGN UP</button>
                 </form>
             </div>
@@ -121,4 +125,3 @@ export default function SignUpForm() {
         </div>
     );
 }
-// hello world
