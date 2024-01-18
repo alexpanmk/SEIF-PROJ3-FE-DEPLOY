@@ -13,6 +13,7 @@ import Navbar from "./Navbar/Navbar";
 import LoginPage from "./LoginPage/LoginPage";
 import JournalForm from "./JournalForm/JournalForm"; 
 import JournalEntry from "./JournalEntry/JournalEntry"; 
+import SignUpPage from "./SignUpPage/SignUpPage"
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -23,46 +24,46 @@ export default function App() {
   //   setUser(getUser());
   // }, []);
 
-  return (
-    <Router>
-    <main className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={user ? <Frontpage /> : <LoginPage />} />
-        <Route path="/journal/new" element={<JournalForm />} />
-        {/* Add a route for an individual journal entry */}
-        <Route path="/journal/entry/:entryId" element={<JournalEntry />} />
-        {/* Redirect any undefined route to the JournalForm for testing purposes */}
-        <Route path="*" element={<Navigate replace to="/journal/new" />} />
-      </Routes>
-    </main>
-  </Router>
+  // return (
+  //   <Router>
+  //   <main className="App">
+  //     <Navbar />
+  //     <Routes>
+  //       <Route path="/" element={user ? <Frontpage /> : <LoginPage />} />
+  //       <Route path="/journal/new" element={<JournalForm />} />
+  //       {/* Add a route for an individual journal entry */}
+  //       <Route path="/journal/entry/:entryId" element={<JournalEntry />} />
+  //       {/* Redirect any undefined route to the JournalForm for testing purposes */}
+  //       <Route path="*" element={<Navigate replace to="/journal/new" />} />
+  //     </Routes>
+  //   </main>
+  // </Router>
 //   const [count, setCount] = useState(0);
 //   const [user, setUser] = useState(getUser);
 
-//   return (
-//     <Router>
-//       {" "}
-//       {/* <-- Wrap your application with Router */}
-//       <main className="App">
-//         {user ? (
-//           <>
-//             <Navbar />
-//             <Routes>
-//               <Route path="/" element={<Frontpage />} />
-//               {/* other routes for logged-in users */}
-//             </Routes>
-//           </>
-//         ) : (
-//           <Routes>
-//             <Route path="/" element={<LoginPage />} />
-//             <Route path="/signup" element={<SignUpPage />} />
-//             {/* Redirect any other route to the Login Page */}
-//             <Route path="*" element={<Navigate replace to="/" />} />
-//           </Routes>
-//         )}
-//       </main>
-//     </Router>
+  return (
+    <Router>
+      {" "}
+      {/* <-- Wrap your application with Router */}
+      <main className="App">
+        {user ? (
+          <>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Frontpage />} />
+              {/* other routes for logged-in users */}
+            </Routes>
+          </>
+        ) : (
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            {/* Redirect any other route to the Login Page */}
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </Routes>
+        )}
+      </main>
+    </Router>
   );
 }
 
