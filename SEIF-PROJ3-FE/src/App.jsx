@@ -11,9 +11,9 @@ import { getUser } from "./service/users";
 import Frontpage from "./Frontpage/Frontpage";
 import Navbar from "./Navbar/Navbar";
 import LoginPage from "./LoginPage/LoginPage";
-import JournalForm from "./JournalForm/JournalForm"; 
-import JournalEntry from "./JournalEntry/JournalEntry"; 
-import SignUpPage from "./SignUpPage/SignUpPage"
+import JournalForm from "./JournalForm/JournalForm";
+import JournalEntry from "./JournalEntry/JournalEntry";
+import SignUpPage from "./SignUpPage/SignUpPage";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -38,15 +38,15 @@ export default function App() {
   //     </Routes>
   //   </main>
   // </Router>
-//   const [count, setCount] = useState(0);
-//   const [user, setUser] = useState(getUser);
+  //   const [count, setCount] = useState(0);
+  //   const [user, setUser] = useState(getUser);
 
   return (
     <Router>
       {" "}
       {/* <-- Wrap your application with Router */}
       <main className="App">
-        {user ? (
+        {!user ? (
           <>
             <Navbar />
             <Routes>
@@ -66,5 +66,3 @@ export default function App() {
     </Router>
   );
 }
-
-
