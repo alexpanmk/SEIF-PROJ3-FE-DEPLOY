@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function QuoteCard() {
+  const [quote, setQuote] = useState("");
+
+  useEffect(() => {
+    //TODO: Reference from settings in future if we want to allow users to turn off quotes or show quotes pertaining to challenges detected in their journal entries.
+
+    !quote &&
+      fetch("https://api.quotable.io/random")
+        .then((res) => res.json())
+        .then((data) => setQuote(data.content));
+  });
+
   return (
-    <div className="h-96 my-8 card bordered shadow-lg bg-primary">
-      <div className="card-body">
-        {/* <h2 className="card-title">Card Title</h2> */}
-        {/* <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        necessitatibus incidunt ut officiis explicabo inventore.
-      </p> */}
-
-        <p className="text-9xl font-bold">Quote</p>
-
-        {/* <div className="justify-end card-actions">
-        <button className="btn btn-secondary">More Info</button>
-      </div> */}
+    quote && (
+      <div className="my-8 card bordered shadow-lg bg-secondary">
+        <div className="card-body">
+          <p className="text-2xl font-bold">{quote}</p>
+        </div>
       </div>
-    </div>
+    )
   );
 }
 
