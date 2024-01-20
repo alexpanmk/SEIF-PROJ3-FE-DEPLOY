@@ -14,7 +14,7 @@ function QuoteCard() {
 
   return (
     quote && (
-      <div className="my-8 card bordered shadow-lg bg-secondary">
+      <div className="my-8 card bordered shadow-lg bg-accent">
         <div className="card-body">
           <p className="text-2xl font-bold">{quote}</p>
         </div>
