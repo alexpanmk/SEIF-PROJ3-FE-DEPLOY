@@ -16,7 +16,6 @@ import JournalEntry from "./JournalEntry/JournalEntry";
 import SignUpPage from "./SignUpPage/SignUpPage"
 import DayCard from "./DayCard/DayCard"; // Adjust the import path as necessary
 
-
 export default function App() {
   const [user, setUser] = useState(null);
   const exampleDateNo = '1';
@@ -102,5 +101,3 @@ export default function App() {
     </Router>
   );
 }
-
-

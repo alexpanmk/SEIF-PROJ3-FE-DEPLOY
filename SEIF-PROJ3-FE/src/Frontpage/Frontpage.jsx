@@ -1,35 +1,32 @@
 import { React, useState, useEffect } from "react";
 import DisplayCard from "../DisplayCard/DisplayCard";
+import QuoteCard from "../QuoteCard/QuoteCard";
 
 //TODO: To fetch cards to render for DisplayCards, to create useElysioAPI for logic to create the display sequence.
 
-const sampleMonthArray = [
-  { dateNo: 1, day: "Wednesday" },
-  { dateNo: 2, day: "Thursday" },
-  { dateNo: 3, day: "Friday" },
-  { dateNo: 4, day: "Saturday" },
-  { dateNo: 5, day: "Sunday" },
-];
-
 function Frontpage() {
   const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
-  const [quoteArray, setQuoteArray] = useState([]); // For the quotes
+
+  //TODO: Fetch the display sequence from the displaycard route
   const [displayCardArray, setDisplayCardArray] = useState([]); // For the cards
+
+  useEffect(() => {
+    const updatedDisplayCardArray = monthArray.map((day, index) => {
+      return (
+        <DisplayCard
+          key={index}
+          dateNo={day.dateNumber}
+          day={day.day}
+          index={index}
+        />
+      );
+    });
+    setDisplayCardArray(updatedDisplayCardArray);
+  }, [monthArray]);
 
   return (
     <>
-      <div class="ml-6 mr-6 gap-8 columns-4 ">
-        {monthArray.map((day, index) => {
-          return (
-            <DisplayCard
-              key={index}
-              dateNo={day.dateNumber}
-              day={day.day}
-              index={index}
-            />
-          );
-        })}
-      </div>
+      <div class="ml-6 mr-6 gap-8 columns-4 ">{displayCardArray}</div>
     </>
   );
 }
