@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { createJournalEntry } from '../service/journalentry';
 
-const JournalForm = () => {
+const JournalForm = ({ card_id, onClose }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
 
   const user_id = "65a22ea8faff54dc30fd9da1";
-  const card_id = "65a2098afaff54dc30fd9d9b";
+  //const card_id = "65a2098afaff54dc30fd9d9b";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +29,11 @@ const JournalForm = () => {
       setText('');
       setDate('');
     } catch (error) {
+      console.log('Journal entry data:', entryData);
       console.error('Error saving journal entry:', error);
     }
+
+    onClose();
   };
 
   return (
