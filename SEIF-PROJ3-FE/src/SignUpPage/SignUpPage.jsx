@@ -2,9 +2,17 @@ import { useState } from "react";
 import { signUp } from "../service/users";
 import { hashData } from "../util/security";
 
+import { useNavigate } from "react-router-dom";
+
+import Modal from "../Modal/Modal";
+
 export default function SignUpForm() {
   const [formState, setFormState] = useState({});
   const [disable, setDisable] = useState(true);
+
+  //Modal states
+  const [successModal, setSuccessModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
 
   function handleChange(evt) {
     var currForm = formState;
@@ -16,6 +24,7 @@ export default function SignUpForm() {
   // make sure check and password is the same
   function checkPassword() {
     // password validation
+    // TODO: to use react form hook
     // must have at least 1 uppercase, 1 lowercase, 1 special
     var currForm = formState;
     if (!currForm.password) {
@@ -59,6 +68,7 @@ export default function SignUpForm() {
       // Baby step!
       console.log(user);
       //TODO: Show Success modal. Redirect to login page
+      setSuccessModal(true);
     } catch (e) {
       console.log(e);
       //TODO: Error modal if not successful
@@ -144,7 +154,28 @@ export default function SignUpForm() {
           </button>
         </form>
       </div>
-      {/* <p className="error-message">&nbsp;</p> */}
+
+      {successModal && (
+        <Modal
+          title="Success"
+          message="You have successfully signed up!"
+          onDismiss={() => {
+            setSuccessModal(false);
+            navigate("/login");
+          }}
+        />
+      )}
+
+      {errorModal && (
+        <Modal
+          title="Error"
+          message="There was an error signing up. Please try again."
+          onDismiss={() => {
+            setErrorModal(false);
+            setFormState({});
+          }}
+        />
+      )}
     </div>
   );
 }
