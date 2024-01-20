@@ -14,9 +14,14 @@ import LoginPage from "./LoginPage/LoginPage";
 import JournalForm from "./JournalForm/JournalForm"; 
 import JournalEntry from "./JournalEntry/JournalEntry"; 
 import SignUpPage from "./SignUpPage/SignUpPage"
+import DayCard from "./DayCard/DayCard"; // Adjust the import path as necessary
+
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const exampleDateNo = '1';
+  const exampleDay = 'Monday';
+  const exampleJournalEntryIds = ['65a6aa802302804f074118b8'];
 
   // Commenting out the useEffect that retrieves user information - Vivian
 
@@ -38,31 +43,62 @@ export default function App() {
   //     </Routes>
   //   </main>
   // </Router>
-//   const [count, setCount] = useState(0);
-//   const [user, setUser] = useState(getUser);
+  // const [count, setCount] = useState(0);
+  // const [user, setUser] = useState(getUser);
 
+
+
+  // Route for login and signup - Ben
+  // return (
+  //   <Router>
+  //     {" "}
+  //     {/* <-- Wrap your application with Router */}
+  //     <main className="App">
+  //       {user ? (
+  //         <>
+  //           <Navbar />
+  //           <Routes>
+  //             <Route path="/" element={<Frontpage />} />
+  //             {/* other routes for logged-in users */}
+  //           </Routes>
+  //         </>
+  //       ) : (
+  //         <Routes>
+  //           <Route path="/" element={<LoginPage />} />
+  //           <Route path="/signup" element={<SignUpPage />} />
+  //           {/* Redirect any other route to the Login Page */}
+  //           <Route path="*" element={<Navigate replace to="/" />} />
+  //         </Routes>
+  //       )}
+  //     </main>
+  //   </Router>
+  // );
+
+
+
+  // Route to test day card - Ben
   return (
     <Router>
-      {" "}
-      {/* <-- Wrap your application with Router */}
-      <main className="App">
-        {user ? (
-          <>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Frontpage />} />
-              {/* other routes for logged-in users */}
-            </Routes>
-          </>
-        ) : (
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            {/* Redirect any other route to the Login Page */}
-            <Route path="*" element={<Navigate replace to="/" />} />
-          </Routes>
-        )}
-      </main>
+      <div className="App">
+        {/* Other components like Navbar, etc. */}
+
+        <Routes>
+          {/* Define a route for the root path */}
+          <Route path="/" element={<Frontpage />} />
+
+          {/* Other routes */}
+          <Route path="/daycard-test" element={
+            <DayCard 
+              dateNo={exampleDateNo} 
+              day={exampleDay} 
+              journalEntryIds={exampleJournalEntryIds} 
+            />
+          } />
+
+          {/* Redirect any undefined route to the root path for now */}
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
