@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getJournalEntryById } from "../service/journalentry";
 import JournalForm from "../JournalForm/JournalForm";
 
-function DayCard({ dateNo, day, journalEntryIds }) {
+function DayCard({ dateNo, day, journalEntryIds, card_id }) {
   const [journalEntries, setJournalEntries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -55,7 +55,7 @@ function DayCard({ dateNo, day, journalEntryIds }) {
         
         {isJournalFormOpen && (
           <JournalForm 
-            card_id={dateNo}
+            card_id={card_id}
             onClose={handleCloseJournalForm} 
           />
         )}

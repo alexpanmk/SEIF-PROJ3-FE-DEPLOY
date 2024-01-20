@@ -21,6 +21,7 @@ export default function App() {
   const exampleDateNo = '1';
   const exampleDay = 'Monday';
   const exampleJournalEntryIds = ['65a6aa802302804f074118b8'];
+  const exampleCardId = ['65a2098afaff54dc30fd9d9b']
 
   // Commenting out the useEffect that retrieves user information - Vivian
 
@@ -90,7 +91,8 @@ export default function App() {
             <DayCard 
               dateNo={exampleDateNo} 
               day={exampleDay} 
-              journalEntryIds={exampleJournalEntryIds} 
+              journalEntryIds={exampleJournalEntryIds}
+              card_id={exampleCardId}
             />
           } />
 

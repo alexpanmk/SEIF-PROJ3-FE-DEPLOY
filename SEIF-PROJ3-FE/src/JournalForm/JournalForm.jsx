@@ -29,6 +29,7 @@ const JournalForm = ({ card_id, onClose }) => {
       setText('');
       setDate('');
     } catch (error) {
+      console.log('Journal entry data:', entryData);
       console.error('Error saving journal entry:', error);
     }
 
