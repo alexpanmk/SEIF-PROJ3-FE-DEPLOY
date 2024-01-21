@@ -5,7 +5,9 @@ import { hashDataWithSaltRounds, storeToken } from "../util/security";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginPage() {
+export default function LoginPage(props) {
+  const { setUser } = props;
+
   const [formState, setFormState] = useState({});
   const navigate = useNavigate();
 
@@ -41,6 +43,8 @@ export default function LoginPage() {
       const token = await loginUser(formData);
       // store token in localStorage
       storeToken(token);
+      // set user
+      setUser(formData.email);
       // redirect to home page
       navigate("/");
       // Baby step!

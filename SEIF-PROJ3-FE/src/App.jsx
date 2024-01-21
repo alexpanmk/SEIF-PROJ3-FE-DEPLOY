@@ -33,7 +33,7 @@ export default function App() {
           </>
         ) : (
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage setUser={setUser} />} />
             <Route path="/signup" element={<SignUpPage />} />
             {/* Redirect any other route to the Login Page */}
             <Route path="*" element={<Navigate replace to="/" />} />
