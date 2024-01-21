@@ -26,15 +26,9 @@ export default function LoginPage() {
       delete formData.confirm;
       // highlight-end
       console.log(formData);
-      // Determine if input is email or username
-      const emailOrUsername = formData.emailOrUsername;
-      const isEmail = emailOrUsername.includes("@");
-      const credentials = isEmail
-        ? { email: emailOrUsername }
-        : { username: emailOrUsername };
       // get user hash password from database
-      console.log("Logging in with:", credentials);
-      const loginDetails = await getLoginDetails(credentials);
+      console.log("Logging in with:", formData.email);
+      const loginDetails = await getLoginDetails(formData.email);
       console.log(loginDetails);
 
       const hashedPassword = hashDataWithSaltRounds(
@@ -67,14 +61,14 @@ export default function LoginPage() {
               className="space-y-4"
             >
               <div className="flex flex-col">
-                <label htmlFor="emailOrUsername" className="text-lg">
-                  Email/Username
+                <label htmlFor="email" className="text-lg">
+                  Email
                 </label>
                 <input
                   type="text"
-                  name="emailOrUsername"
+                  name="email"
                   onChange={handleChange}
-                  placeholder="Enter Email or Username"
+                  placeholder="Enter Email"
                   required
                   className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
