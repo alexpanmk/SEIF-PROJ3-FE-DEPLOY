@@ -4,7 +4,10 @@ import QuoteCard from "../QuoteCard/QuoteCard";
 
 //TODO: To fetch cards to render for DisplayCards, to create useElysioAPI for logic to create the display sequence.
 
-function Frontpage() {
+function Frontpage(props) {
+  const { month } = props;
+
+  console.log(month);
   const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
 
   //TODO: Fetch the display sequence from the displaycard route

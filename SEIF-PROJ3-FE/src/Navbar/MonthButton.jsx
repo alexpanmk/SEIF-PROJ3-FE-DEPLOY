@@ -6,7 +6,7 @@ function MonthButton(props) {
     <div>
       <button
         onClick={() => onClick(month)}
-        className="ml-4 bg-secondary text-white py-2 px-4 rounded"
+        className="ml-4 bg-gray-300 text-white py-2 px-6 rounded"
       >
         {returnMonth(month)}
       </button>
