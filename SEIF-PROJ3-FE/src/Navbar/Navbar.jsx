@@ -1,6 +1,19 @@
 import React from "react";
+import MonthButton from "./MonthButton";
 
-function Navbar() {
+function Navbar(props) {
+  const { setMonth } = props;
+
+  const monthButtons = () => {
+    const monthButtons = [];
+    for (let i = 1; i < 13; i++) {
+      monthButtons.push(
+        <MonthButton key={i} month={i} onClick={setMonth(i)} />
+      );
+    }
+    return monthButtons;
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-none">
@@ -23,6 +36,9 @@ function Navbar() {
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">Elysio</a>
       </div>
+      <div className="flex-1"></div>
+      <div className="flex-none">{monthButtons()}</div>
+
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg
