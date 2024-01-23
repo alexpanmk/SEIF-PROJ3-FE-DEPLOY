@@ -17,6 +17,7 @@ import SignUpPage from "./SignUpPage/SignUpPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser);
+  const [month, setMonth] = useState(new Date().getMonth());
 
   return (
     <Router>
@@ -25,9 +26,9 @@ export default function App() {
       <main className="App">
         {user ? (
           <>
-            <Navbar />
+            <Navbar setMonth={setMonth} />
             <Routes>
-              <Route path="/" element={<Frontpage />} />
+              <Route path="/" element={<Frontpage month={month} />} />
               {/* other routes for logged-in users */}
             </Routes>
           </>
