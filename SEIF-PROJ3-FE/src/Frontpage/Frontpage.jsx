@@ -7,6 +7,11 @@ import QuoteCard from "../QuoteCard/QuoteCard";
 function Frontpage(props) {
   const { month } = props;
 
+  // Dummy Data - Ben
+  const exampleJournalEntryIds = ['65ab8f82371a90941eac88a9']; 
+  const exampleCardId = ['65a2098afaff54dc30fd9d9b'];
+  //
+
   console.log(month);
   const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
 
@@ -21,6 +26,8 @@ function Frontpage(props) {
           dateNo={day.dateNumber}
           day={day.day}
           index={index}
+          journalEntryIds={exampleJournalEntryIds}
+          card_id={exampleCardId}
         />
       );
     });
@@ -29,7 +36,7 @@ function Frontpage(props) {
 
   return (
     <>
-      <div class="ml-6 mr-6 gap-8 columns-4 ">{displayCardArray}</div>
+      <div className="ml-6 mr-6 gap-8 columns-4 ">{displayCardArray}</div>
     </>
   );
 }
