@@ -37,6 +37,7 @@ export default function App() {
             <Route path="/" element={<LoginPage setUser={setUser} />} />
             <Route path="/signup" element={<SignUpPage />} />
             {/* Redirect any other route to the Login Page */}
+            <Route path="/journal/new" element={<JournalForm />} />
             <Route path="*" element={<Navigate replace to="/" />} />
           </Routes>
         )}
@@ -44,3 +45,4 @@ export default function App() {
     </Router>
   );
 }
+
