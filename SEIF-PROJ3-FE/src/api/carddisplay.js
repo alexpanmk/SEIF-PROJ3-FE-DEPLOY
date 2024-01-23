@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:3000/carddisplay';
 
 export async function getCardsbyMonthYear(month, year) {
-  const response = await fetch(`${BASE_URL}/create-card/?month=${month}&year=${year}`, {
+  const response = await fetch(`${BASE_URL}/get-cards/1/2024`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });

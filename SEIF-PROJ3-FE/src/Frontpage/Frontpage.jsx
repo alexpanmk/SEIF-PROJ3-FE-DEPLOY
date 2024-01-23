@@ -2,18 +2,36 @@ import { React, useState, useEffect } from "react";
 import DisplayCard from "../DisplayCard/DisplayCard";
 import QuoteCard from "../QuoteCard/QuoteCard";
 
+import { getCardsbyMonthYear } from "../service/carddisplay";
+
 //TODO: To fetch cards to render for DisplayCards, to create useElysioAPI for logic to create the display sequence.
 
 function Frontpage(props) {
   const { month } = props;
-
-  console.log(month);
   const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
-
-  //TODO: Fetch the display sequence from the displaycard route
   const [displayCardArray, setDisplayCardArray] = useState([]); // For the cards
+  const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        setIsloading(true);
+        const cards = await getCardsbyMonthYear(2024, 1);
+        // setMonthArray(cards);
+        setDisplayCardArray(cards);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsloading(false);
+      }
+    };
+    fetchCards();
+  }, [month]);
+
+  console.log(displayCardArray);
+
+  useEffect(() => {
+    //TODO: map displayCardArray to DisplayCard components
     const updatedDisplayCardArray = monthArray.map((day, index) => {
       return (
         <DisplayCard
