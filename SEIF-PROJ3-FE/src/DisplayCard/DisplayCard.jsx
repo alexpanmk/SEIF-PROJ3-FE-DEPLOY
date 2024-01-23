@@ -7,7 +7,7 @@ import QuoteCard from "../QuoteCard/QuoteCard";
 //TODOS: props for display card
 
 function DisplayCard(props) {
-  const { dateNo, day, index } = props;
+  const { cardType, cardData, index } = props;
   const [settings, setSettings] = useState({
     quoteFrequency: 3, //Frequency of quote card
   });
@@ -15,20 +15,18 @@ function DisplayCard(props) {
 
   //TODO: Conditional rendering for card type
 
-  if ((index + 1) % settings.quoteFrequency === 0) {
-    return <QuoteCard />;
-  } else {
-    return <DayCard dateNo={dateNo} day={day} />;
+  switch (cardType) {
+    case "quote":
+      return <QuoteCard quote={cardData.quote} />;
+    case "day":
+      //TODO: Include payload attribute should we decide to pass other data through this way
+      return <DayCard dateNo={cardData.dayNo} day={cardData.dayName} />;
   }
 
-  // return (
-  //   <>
-  //     {if ((index + 1) % 3 === 0) {
-  //       <QuoteCard />
-  //     } else {
-  //     <DayCard dateNo={dateNo} day={day} />
-  //     }}
-  //   </>
-  // );
+  // if ((index + 1) % settings.quoteFrequency === 0) {
+  //   return <QuoteCard />;
+  // } else {
+  //   return <DayCard dateNo={dateNo} day={day} />;
+  // }
 }
 export default DisplayCard;
