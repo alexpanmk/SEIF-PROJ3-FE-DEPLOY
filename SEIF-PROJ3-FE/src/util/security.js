@@ -42,3 +42,7 @@ export function getToken() {
     }
     return token;
 }
+
+export function removeToken() {
+    localStorage.removeItem("token");
+} 
