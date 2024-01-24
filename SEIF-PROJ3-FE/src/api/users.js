@@ -112,7 +112,7 @@ export async function logoutUser(token, userData) {
   console.log(logoutURL);
   const res = await fetch(logoutURL, {
     method: "POST",
-    headers: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}`},
     // Fetch requires data payloads to be stringified
     // and assigned to a body property on the options object
     body: JSON.stringify(userData),

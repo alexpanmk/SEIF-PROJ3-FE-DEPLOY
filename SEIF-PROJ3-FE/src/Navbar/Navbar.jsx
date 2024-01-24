@@ -1,5 +1,6 @@
 import React from "react";
 import MonthButton from "./MonthButton";
+import { logoutUser } from "../service/users";
 
 function Navbar(props) {
   const { setMonth } = props;
@@ -39,7 +40,7 @@ function Navbar(props) {
 
       <div className="flex-none">
         <button
-          onClick={() => onClick(month)}
+          onClick={() => logoutUser()}
           className="ml-4 bg-gray-300 text-white py-2 px-6 rounded"
         >
           {"Logout"}
