@@ -1,11 +1,12 @@
 import * as journalAPI from '../api/journalentry';
+import { getToken } from "../util/security";
 
 export async function createJournalEntry(entryData) {
 
   //Append user in entryData
   const token = getToken();
   const user = JSON.parse(atob(token.split(".")[1])).payload.email;
-  entryData.user = user;
+  // entryData.email = user;
 
   // Delegate the network request code to the journalentry-api.js API module
   return await journalAPI.createJournalEntry(entryData);

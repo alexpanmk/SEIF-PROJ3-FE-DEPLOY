@@ -7,13 +7,13 @@ const JournalForm = ({ card_id, onClose }) => {
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
 
-  const user_id = "65a22ea8faff54dc30fd9da1";
-  //const card_id = "65a2098afaff54dc30fd9d9b";
+  // const user_id = "65a22ea8faff54dc30fd9da1";
+  // const card_id = "65a2098afaff54dc30fd9d9b";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const entryData = {
-      user_id,
+      // email,
       card_id,
       entry_title: title,
       entry_description: description,
