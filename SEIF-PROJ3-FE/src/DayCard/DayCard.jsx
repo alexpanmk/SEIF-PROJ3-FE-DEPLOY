@@ -5,7 +5,7 @@ import JournalForm from "../JournalForm/JournalForm";
 function DayCard({ dateNo, day, journalEntryIds, card_id }) {
   const [journalEntries, setJournalEntries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isHovering, setIsHovering] = useState(false);
   const [isJournalFormOpen, setIsJournalFormOpen] = useState(false);
 
@@ -14,11 +14,11 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
     try {
       setIsLoading(true);
       const entries = await Promise.all(
-        journalEntryIds.map(id => getJournalEntryById(id))
+        journalEntryIds.map((id) => getJournalEntryById(id))
       );
       setJournalEntries(entries);
     } catch (err) {
-      setError('Failed to fetch journal entries');
+      setError("Failed to fetch journal entries");
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -44,20 +44,17 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
   if (error) return <div className="alert alert-error">{error}</div>;
 
   return (
-    <div 
-      className="h-96 my-8 card bordered shadow-lg bg-primary" 
-      onMouseEnter={handleHover} 
+    <div
+      className="h-96 my-8 card bordered shadow-lg bg-primary"
+      onMouseEnter={handleHover}
       onMouseLeave={handleHover}
     >
       <div className="card-body">
         <h1 className="text-9xl font-bold">{dateNo}</h1>
         <p className="text-2xl font-bold">{day}</p>
-        
+
         {isJournalFormOpen && (
-          <JournalForm 
-            card_id={card_id}
-            onClose={handleCloseJournalForm} 
-          />
+          <JournalForm card_id={card_id} onClose={handleCloseJournalForm} />
         )}
 
         {isHovering && (
@@ -69,9 +66,12 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
                 <p>{entry.entry_text}</p>
               </div>
             ))}
-            <button className="btn btn-secondary" onClick={handleAddJournalEntry}>
+            {/* <button
+              className="btn btn-secondary"
+              onClick={handleAddJournalEntry}
+            >
               Add Journal Entry
-            </button>
+            </button> */}
           </div>
         )}
       </div>

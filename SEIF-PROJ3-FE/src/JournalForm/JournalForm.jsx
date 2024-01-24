@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { createJournalEntry } from '../service/journalentry';
+import React, { useState } from "react";
+import { createJournalEntry } from "../service/journalentry";
 
 const JournalForm = ({ card_id, onClose }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [text, setText] = useState('');
-  const [date, setDate] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [text, setText] = useState("");
+  const [date, setDate] = useState("");
 
   const user_id = "65a22ea8faff54dc30fd9da1";
   //const card_id = "65a2098afaff54dc30fd9d9b";
@@ -23,21 +23,21 @@ const JournalForm = ({ card_id, onClose }) => {
 
     try {
       const savedEntry = await createJournalEntry(entryData);
-      console.log('Journal entry saved:', savedEntry);
-      setTitle('');
-      setDescription('');
-      setText('');
-      setDate('');
+      console.log("Journal entry saved:", savedEntry);
+      setTitle("");
+      setDescription("");
+      setText("");
+      setDate("");
     } catch (error) {
-      console.log('Journal entry data:', entryData);
-      console.error('Error saving journal entry:', error);
+      console.log("Journal entry data:", entryData);
+      console.error("Error saving journal entry:", error);
     }
 
     onClose();
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex min-w-40 justify-center items-center h-screen">
       <div className="card bg-base-100 shadow-xl w-full max-w-2xl">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
@@ -90,7 +90,9 @@ const JournalForm = ({ card_id, onClose }) => {
               />
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary w-full">Save Journal Entry</button>
+              <button type="submit" className="btn btn-primary w-full">
+                Save Journal Entry
+              </button>
             </div>
           </form>
         </div>
@@ -100,8 +102,6 @@ const JournalForm = ({ card_id, onClose }) => {
 };
 
 export default JournalForm;
-
-
 
 //Code below is to be revised to use user_id/username and card_id as validation
 
@@ -122,7 +122,7 @@ export default JournalForm;
 //   const user_id = "65a22ea8faff54dc30fd9da1";
 //   const card_id = "65a2098afaff54dc30fd9d9b";
 
-// //Commented below where we will fetch the user_id and card_id later on 
+// //Commented below where we will fetch the user_id and card_id later on
 
 // //   useEffect(() => {
 // //     const initializeForm = async () => {
@@ -133,7 +133,7 @@ export default JournalForm;
 // //             setUserId(userDetails._id); // Set the user ID
 // //           } else {
 // //             console.error('User not found');
-// //           }  
+// //           }
 
 // //         // Fetch or create the day card
 // //         const todayCard = await fetchOrCreateTodayCard();
