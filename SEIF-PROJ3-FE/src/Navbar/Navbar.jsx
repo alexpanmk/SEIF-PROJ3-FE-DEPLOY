@@ -35,7 +35,16 @@ function Navbar(props) {
         <a className="btn btn-ghost text-xl">Elysio</a>
       </div>
 
-      <div className="flex-none mr-4">{monthButtons()}</div>
+      {/* <div className="flex-none mr-4">{monthButtons()}</div> */}
+
+      <div className="flex-none">
+        <button
+          onClick={() => onClick(month)}
+          className="ml-4 bg-gray-300 text-white py-2 px-6 rounded"
+        >
+          {"Logout"}
+        </button>
+      </div>
 
       {/* <div className="flex-none">
         <button className="btn btn-square btn-ghost">

@@ -4,6 +4,7 @@ export async function createJournalEntry(entryData) {
   const createURL = `${BASE_URL}/create-journal-entry`; 
   const response = await fetch(createURL, {
     method: 'POST',
+    //TODO: Add JWT token to headers
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(entryData),
   });
