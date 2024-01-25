@@ -1,13 +1,18 @@
+import { getToken } from "../util/security";
+
 const BASE_URL = 'http://localhost:3000/journal';
 
-//create journal based on auth token
-export async function createJournalEntry(entryData, token) {
-  const createURL = `${BASE_URL}/create-journal-entry`;
+export async function createJournalEntry(entryData) {
+
+  const token = getToken();
+  
+  const createURL = `${BASE_URL}/create-journal-entry`; 
   const response = await fetch(createURL, {
     method: 'POST',
+    //TODO: Add JWT token to headers
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` // Assuming you are using Bearer token
+      'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify(entryData),
   });
