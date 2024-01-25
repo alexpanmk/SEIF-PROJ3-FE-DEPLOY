@@ -33,8 +33,17 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
     }
   }, [journalEntryIds]);
 
-  const handleHover = () => setIsHovering(!isHovering);
-  const handleAddJournalEntry = () => setIsJournalFormOpen(true);
+  const handleHover = () => {
+    if (!isJournalFormOpen) {
+      setIsHovering(!isHovering);
+    }
+  };
+
+  const handleAddJournalEntry = () => {
+    setIsHovering(false); // Hide button when opening the form
+    setIsJournalFormOpen(true);
+  };
+
   const handleCloseJournalForm = () => {
     setIsJournalFormOpen(false);
     fetchJournalEntries(); // Refresh entries after adding a new one
@@ -73,6 +82,13 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
               Add Journal Entry
             </button> */}
           </div>
+        ))}
+
+        {/* Button Visible Only On Hover */}
+        {isHovering && !isJournalFormOpen && (
+          <button className="btn btn-secondary" onClick={handleAddJournalEntry}>
+            Add Journal Entry
+          </button>
         )}
       </div>
     </div>

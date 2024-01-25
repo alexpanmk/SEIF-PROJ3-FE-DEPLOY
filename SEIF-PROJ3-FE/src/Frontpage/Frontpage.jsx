@@ -6,6 +6,7 @@ import { getCardsbyMonthYear } from "../service/carddisplay";
 
 function Frontpage(props) {
   const { month } = props;
+
   const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
   const [displayCardArray, setDisplayCardArray] = useState([]); // For the cards
   const [isLoading, setIsloading] = useState(false);

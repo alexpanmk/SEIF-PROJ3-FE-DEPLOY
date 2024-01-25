@@ -10,7 +10,10 @@ export async function createJournalEntry(entryData) {
   const response = await fetch(createURL, {
     method: 'POST',
     //TODO: Add JWT token to headers
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
     body: JSON.stringify(entryData),
   });
 

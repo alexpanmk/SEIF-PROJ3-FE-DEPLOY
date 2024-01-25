@@ -12,6 +12,14 @@ const JournalForm = ({ card_id, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const token = getToken();
+    if (!token) {
+      setError('No token found or token is invalid');
+      return;
+    }
+
+    // create the journal entry data
     const entryData = {
       // email,
       card_id,
@@ -32,13 +40,25 @@ const JournalForm = ({ card_id, onClose }) => {
       console.log("Journal entry data:", entryData);
       console.error("Error saving journal entry:", error);
     }
-
-    onClose();
   };
 
+  // Display error if it exists
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  // JSX for form goes here...
+  // Ensure that you're displaying any errors to the user and handling form submit
   return (
     <div className="flex min-w-40 justify-center items-center h-screen">
       <div className="card bg-base-100 shadow-xl w-full max-w-2xl">
+        {/* Close Button */}
+        <button 
+          onClick={onClose} 
+          className="absolute top-2 right-4 btn btn-sm btn-circle btn-outline"
+        >
+          ✕
+        </button>
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <h2 className="card-title text-center mb-4">Journal Entry</h2>
