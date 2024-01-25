@@ -22,11 +22,5 @@ function DisplayCard(props) {
       //TODO: Include payload attribute should we decide to pass other data through this way
       return <DayCard dateNo={cardData.dayNo} day={cardData.dayName} />;
   }
-
-  // if ((index + 1) % settings.quoteFrequency === 0) {
-  //   return <QuoteCard />;
-  // } else {
-  //   return <DayCard dateNo={dateNo} day={day} />;
-  // }
 }
 export default DisplayCard;
