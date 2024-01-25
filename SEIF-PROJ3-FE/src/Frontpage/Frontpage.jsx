@@ -31,7 +31,7 @@ function Frontpage(props) {
 
   return (
     <>
-      <div class="ml-6 mr-6 gap-8 columns-4 ">
+      <div className="ml-6 mr-6 gap-8 columns-4 ">
         {displayCardArray.map((card, index) => {
           return (
             <DisplayCard
