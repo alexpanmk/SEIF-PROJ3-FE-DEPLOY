@@ -8,6 +8,7 @@ import { getCardsbyMonthYear } from "../service/carddisplay";
 
 function Frontpage(props) {
   const { month } = props;
+
   const [monthArray, setMonthArray] = useState(generateMonthArray(2024, 1)); //For the days
   const [displayCardArray, setDisplayCardArray] = useState([]); // For the cards
   const [isLoading, setIsloading] = useState(false);
@@ -39,6 +40,8 @@ function Frontpage(props) {
           dateNo={day.dateNumber}
           day={day.day}
           index={index}
+          journalEntryIds={exampleJournalEntryIds}
+          card_id={exampleCardId}
         />
       );
     });
@@ -47,7 +50,7 @@ function Frontpage(props) {
 
   return (
     <>
-      <div class="ml-6 mr-6 gap-8 columns-4 ">{displayCardArray}</div>
+      <div className="ml-6 mr-6 gap-8 columns-4 ">{displayCardArray}</div>
     </>
   );
 }
