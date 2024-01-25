@@ -30,12 +30,6 @@ function DisplayCard(props) {
       
       return <DayCard dateNo={cardData.dayNo} day={cardData.dayName} />;
   }
-
-  // if ((index + 1) % settings.quoteFrequency === 0) {
-  //   return <QuoteCard />;
-  // } else {
-  //   return <DayCard dateNo={dateNo} day={day} />;
-  // }
 }
 
 export default DisplayCard;
