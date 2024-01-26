@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:3000/daycard';
-const BASE_URL = 'https://elysio.onrender.com/daycard';
+const BASE_URL = 'http://localhost:3000/daycard';
+//const BASE_URL = 'https://elysio.onrender.com/daycard';
 
 export async function getDayCardByDate(date) {
   const response = await fetch(`${BASE_URL}?date=${date}`, {
