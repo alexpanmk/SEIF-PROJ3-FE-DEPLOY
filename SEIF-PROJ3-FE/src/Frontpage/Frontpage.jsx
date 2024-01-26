@@ -4,6 +4,8 @@ import QuoteCard from "../QuoteCard/QuoteCard";
 
 import { getCardsbyMonthYear } from "../service/carddisplay";
 
+//TODO: To fetch cards to render for DisplayCards, to create useElysioAPI for logic to create the display sequence.
+
 function Frontpage(props) {
   const { month } = props;
 
@@ -11,14 +13,13 @@ function Frontpage(props) {
   const [displayCardArray, setDisplayCardArray] = useState([]); // For the cards
   const [isLoading, setIsloading] = useState(false);
 
-  //Fetching from CardDisplay API
   useEffect(() => {
     const fetchCards = async () => {
       try {
         setIsloading(true);
         const cards = await getCardsbyMonthYear(2024, 1);
         // setMonthArray(cards);
-        setDisplayCardArray(cards.displayCards);
+        setDisplayCardArray(cards);
       } catch (err) {
         console.error(err);
       } finally {
@@ -26,24 +27,30 @@ function Frontpage(props) {
       }
     };
     fetchCards();
-  }, []);
+  }, [month]);
 
   console.log(displayCardArray);
 
+  useEffect(() => {
+    //TODO: map displayCardArray to DisplayCard components
+    const updatedDisplayCardArray = monthArray.map((day, index) => {
+      return (
+        <DisplayCard
+          key={index}
+          dateNo={day.dateNumber}
+          day={day.day}
+          index={index}
+          journalEntryIds={exampleJournalEntryIds}
+          card_id={exampleCardId}
+        />
+      );
+    });
+    setDisplayCardArray(updatedDisplayCardArray);
+  }, [monthArray]);
+
   return (
     <>
-      <div class="ml-6 mr-6 gap-8 columns-4 ">
-        {displayCardArray.map((card, index) => {
-          return (
-            <DisplayCard
-              key={index}
-              cardType={card.cardType}
-              cardData={card}
-              index={index}
-            />
-          );
-        })}
-      </div>
+      <div className="ml-6 mr-6 gap-8 columns-4 ">{displayCardArray}</div>
     </>
   );
 }

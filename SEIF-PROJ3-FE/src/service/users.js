@@ -1,6 +1,5 @@
 import * as usersAPI from "../api/users";
-import { getToken,removeToken } from "../util/security";
-
+import { getToken } from "../util/security";
 
 export async function getUserByUsername(username) {
   return await usersAPI.getUserByUsername(username);
@@ -38,17 +37,6 @@ export async function loginUser(userData) {
 export function getUser() {
   const token = getToken();
   // If there's a token, return the user in the payload, otherwise return null
-  return token ? JSON.parse(atob(token.split(".")[1])).payload.email : null;
-}
-
-export async function logoutUser() {
- const token = getToken();
-  if(token){
-    const res = await usersAPI.logoutUser(token, JSON.parse(atob(token.split(".")[1])).payload);
-    removeToken();
-    window.location.reload();
-    return res;
-  }
-  return true;
+  return token ? JSON.parse(atob(token.split(".")[1])).payload.user : null;
 }
 

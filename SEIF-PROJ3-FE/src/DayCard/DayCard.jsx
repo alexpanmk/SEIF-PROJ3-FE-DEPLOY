@@ -5,7 +5,7 @@ import JournalForm from "../JournalForm/JournalForm";
 function DayCard({ dateNo, day, journalEntryIds, card_id }) {
   const [journalEntries, setJournalEntries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [isHovering, setIsHovering] = useState(false);
   const [isJournalFormOpen, setIsJournalFormOpen] = useState(false);
 
@@ -14,11 +14,11 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
     try {
       setIsLoading(true);
       const entries = await Promise.all(
-        journalEntryIds.map((id) => getJournalEntryById(id))
+        journalEntryIds.map(id => getJournalEntryById(id))
       );
       setJournalEntries(entries);
     } catch (err) {
-      setError("Failed to fetch journal entries");
+      setError('Failed to fetch journal entries');
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -53,9 +53,9 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
   if (error) return <div className="alert alert-error">{error}</div>;
 
   return (
-    <div
-      className="h-96 my-8 card bordered shadow-lg bg-primary"
-      onMouseEnter={handleHover}
+    <div 
+      className="h-96 my-8 card bordered shadow-lg bg-primary" 
+      onMouseEnter={handleHover} 
       onMouseLeave={handleHover}
     >
       <div className="card-body">
@@ -63,24 +63,23 @@ function DayCard({ dateNo, day, journalEntryIds, card_id }) {
         <p className="text-2xl font-bold">{day}</p>
 
         {isJournalFormOpen && (
-          <JournalForm card_id={card_id} onClose={handleCloseJournalForm} />
-        )}
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-50">
+            {/* Center the form on the screen */}
+            <div className="bg-white p-4 rounded-lg shadow-lg">
+              <JournalForm 
+                card_id={card_id}
+                onClose={handleCloseJournalForm} 
+              />
+            </div>
+          </div>
+)}  
 
-        {isHovering && (
-          <div>
-            {journalEntries.map((entry, index) => (
-              <div key={index}>
-                <h3>{entry.entry_title}</h3>
-                <p>{entry.entry_description}</p>
-                <p>{entry.entry_text}</p>
-              </div>
-            ))}
-            {/* <button
-              className="btn btn-secondary"
-              onClick={handleAddJournalEntry}
-            >
-              Add Journal Entry
-            </button> */}
+        {/* Journal Entries Always Visible */}
+        {journalEntries.map((entry, index) => (
+          <div key={index}>
+            <h3>{entry.entry_title}</h3>
+            <p>{entry.entry_description}</p>
+            <p>{entry.entry_text}</p>
           </div>
         ))}
 
