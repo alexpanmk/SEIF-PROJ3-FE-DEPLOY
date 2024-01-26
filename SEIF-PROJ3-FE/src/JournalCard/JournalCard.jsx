@@ -18,11 +18,13 @@ function JournalCard(props) {
     };
     updateJournalEntryById(journal._id, newJournal);
     setEdit(false);
+    window.location.reload();
   };
 
   const onDelete = () => {
     deleteJournalEntryById(journal._id);
     setEdit(false);
+    window.location.reload();
   };
 
   if (edit === false) {
