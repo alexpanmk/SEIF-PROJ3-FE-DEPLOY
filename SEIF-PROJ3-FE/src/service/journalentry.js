@@ -25,11 +25,11 @@ export async function getJournalEntryById(entryId) {
 //update by id
 export async function updateJournalEntryById(entryId, entryData) {
   // Delegate the network request code to the api/journalentry.js API module
-  return await journalAPI.updateJournalEntryById(entryId, entryData);
+  return await journalAPI.updateJournalEntry(entryId, entryData);
 }
 
 //delete by id
 export async function deleteJournalEntryById(entryId) {
   // Delegate the network request code to the api/journalentry.js API module
-  return await journalAPI.deleteJournalEntryById(entryId);
+  return await journalAPI.deleteJournalEntry(entryId);
 }

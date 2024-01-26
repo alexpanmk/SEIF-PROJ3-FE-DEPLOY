@@ -2,9 +2,11 @@ import { getToken } from "../util/security";
 
 const BASE_URL = 'http://localhost:3000/journal';
 
+const token = getToken();
+
 export async function createJournalEntry(entryData) {
 
-  const token = getToken();
+ 
   
   const createURL = `${BASE_URL}/create-journal-entry`; 
   const response = await fetch(createURL, {
@@ -61,7 +63,7 @@ export async function getJournalEntryById(entryId) {
 export async function updateJournalEntry(entryId, entryData) {
   const updateURL = `${BASE_URL}/${entryId}`;
   const response = await fetch(updateURL, {
-    method: 'PATCH',
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
     body: JSON.stringify(entryData),
   });
