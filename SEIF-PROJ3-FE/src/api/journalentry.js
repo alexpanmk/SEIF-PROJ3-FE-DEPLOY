@@ -1,7 +1,7 @@
 import { getToken } from "../util/security";
 
-// const BASE_URL = 'http://localhost:3000/journal';
-const BASE_URL = 'https://elysio.onrender.com/journal';
+const BASE_URL = 'http://localhost:3000/journal';
+//const BASE_URL = 'https://elysio.onrender.com/journal';
 
 const token = getToken();
 
