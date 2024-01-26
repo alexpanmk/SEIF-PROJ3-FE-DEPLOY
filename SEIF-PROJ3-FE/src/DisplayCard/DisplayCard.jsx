@@ -3,6 +3,7 @@ import { React, useEffect, useState } from "react";
 //Elysio Card Components
 import DayCard from "../DayCard/DayCard";
 import QuoteCard from "../QuoteCard/QuoteCard";
+import JournalCard from "../JournalCard/JournalCard";
 
 //TODOS: props for display card
 
@@ -13,14 +14,19 @@ function DisplayCard(props) {
   });
   // card will consist of different types / DayCard, QuoteCard, etc.
 
-  //TODO: Conditional rendering for card type
+  console.log(cardData);
 
   switch (cardType) {
     case "quote":
       return <QuoteCard quote={cardData.quote} />;
     case "day":
-      //TODO: Include payload attribute should we decide to pass other data through this way
-      return <DayCard dateNo={cardData.dayNo} day={cardData.dayName} />;
+      return (
+        <>
+          <DayCard dateNo={cardData.dayNo} day={cardData.dayName} />
+          {cardData.journal ? <JournalCard journal={cardData.journal} /> : null}
+        </>
+      );
   }
 }
+
 export default DisplayCard;
