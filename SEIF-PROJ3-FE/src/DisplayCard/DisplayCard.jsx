@@ -8,9 +8,9 @@ import JournalCard from "../JournalCard/JournalCard";
 //TODOS: props for display card
 
 function DisplayCard(props) {
-  const { dateNo, day, index, journalEntryIds, card_id } = props;
+  const { cardType, cardData, index } = props;
   const [settings, setSettings] = useState({
-    quoteFrequency: 4, //Frequency of quote card
+    quoteFrequency: 3, //Frequency of quote card
   });
   // card will consist of different types / DayCard, QuoteCard, etc.
 
@@ -27,16 +27,6 @@ function DisplayCard(props) {
         </>
       );
   }
-
-  // return (
-  //   <>
-  //     {if ((index + 1) % 3 === 0) {
-  //       <QuoteCard />
-  //     } else {
-  //     <DayCard dateNo={dateNo} day={day} />
-  //     }}
-  //   </>
-  // );
 }
 
 export default DisplayCard;
