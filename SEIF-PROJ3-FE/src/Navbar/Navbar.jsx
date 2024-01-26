@@ -9,6 +9,7 @@ function Navbar(props) {
 
   const handleCloseJournalForm = () => {
     setIsJournalFormOpen(false);
+    window.location.reload();
   };
 
   const monthButtons = () => {
