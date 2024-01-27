@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/users';
+const BASE_URL = 'https://seif-proj-3-be.onrender.com';
 //const BASE_URL = 'https://elysio.onrender.com/users';
 
 // Add a function to get user details by username or email
